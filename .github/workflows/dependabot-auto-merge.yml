@@ -1,7 +1,7 @@
 name: Dependabot auto-merge
 on:
   workflow_run:
-    workflows: [Dependabot auto-approve]
+    workflows: [build, codeql-analysis]
     types: [completed]
 
 permissions:
@@ -9,8 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  on-success:
-    dependabot:
+  dependabot:
       runs-on: ubuntu-latest
       if: ${{ github.actor == 'dependabot[bot]' }}
       steps:
