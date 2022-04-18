@@ -15,6 +15,23 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Tests\" />
+    <None Remove="Tests\Validation\" />
+    <None Remove="Tests\Validation\User\" />
+    <None Remove="Tests\Validation\User\Create\" />
+    <None Remove="Tests\Validation\User\Update\" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="..\.editorconfig" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tests\" />
+    <Folder Include="Tests\Validation\" />
+    <Folder Include="Tests\Validation\User\" />
+    <Folder Include="Tests\Validation\User\Create\" />
+    <Folder Include="Tests\Validation\User\Update\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Net6API\Net6API.csproj" />
   </ItemGroup>
 </Project>

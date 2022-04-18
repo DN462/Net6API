@@ -18,7 +18,7 @@ namespace Net6API.Validation
 				Errors++;
 			if (string.IsNullOrWhiteSpace(user.LastName))
 				Errors++;
-			if (string.IsNullOrWhiteSpace(user.Email) || _helper.TestIsEmailValid(user.Email))
+			if (string.IsNullOrWhiteSpace(user.Email) || !_helper.TestIsEmailValid(user.Email))
 				Errors++;
 			if (string.IsNullOrWhiteSpace(user.Phone))
 				Errors++;
@@ -28,7 +28,7 @@ namespace Net6API.Validation
 				Errors++;
 			if (string.IsNullOrWhiteSpace(user.PostalCode))
 				Errors++;
-			if (user.CountryId == 0)
+			if (user.CountryId < 1)
 				Errors++;
 			return Errors;
         }
