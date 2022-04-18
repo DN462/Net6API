@@ -1,58 +1,47 @@
 ﻿using Net6API.Interface;
+using Net6API.Models.Shared.User;
 using Net6API.Models.User;
 
 namespace Net6API.Validation
 {
     public class UserValidation : IUserValidation
 	{
-		private IValidationHelper _helper;
+		private readonly IValidationHelper _helper;
 		public UserValidation(IValidationHelper helper)
         {
 			_helper = helper;
         }
+		private int ValidatingUser(UserInputDataModel user)
+        {
+			int Errors = 0;
+			if (string.IsNullOrWhiteSpace(user.FirstName))
+				Errors++;
+			if (string.IsNullOrWhiteSpace(user.LastName))
+				Errors++;
+			if (string.IsNullOrWhiteSpace(user.Email) || _helper.TestIsEmailValid(user.Email))
+				Errors++;
+			if (string.IsNullOrWhiteSpace(user.Phone))
+				Errors++;
+			if (string.IsNullOrWhiteSpace(user.StreetAddress))
+				Errors++;
+			if (string.IsNullOrWhiteSpace(user.City))
+				Errors++;
+			if (string.IsNullOrWhiteSpace(user.PostalCode))
+				Errors++;
+			if (user.CountryId == 0)
+				Errors++;
+			return Errors;
+        }
 		private bool ValidatingCreatingUser(CreateUserInputDataModel user)
 		{
-			int Errors = 0;
-			if (string.IsNullOrWhiteSpace(user.User.FirstName))
-				Errors++;
-			if (string.IsNullOrWhiteSpace(user.User.LastName))
-				Errors++;
-			if (string.IsNullOrWhiteSpace(user.User.Email) || _helper.TestIsEmailValid(user.User.Email))
-				Errors++;
-			if (string.IsNullOrWhiteSpace(user.User.Phone))
-				Errors++;
-			if (string.IsNullOrWhiteSpace(user.User.StreetAddress))
-				Errors++;
-			if (string.IsNullOrWhiteSpace(user.User.City))
-				Errors++;
-			if (string.IsNullOrWhiteSpace(user.User.PostalCode))
-				Errors++;
-			if (user.User.CountryId == 0)
-				Errors++;
-			return Errors == 0;
+			return ValidatingUser(user.User) == 0;
 		}
 		private bool ValidatingUpdatingUser(UpdateUserInputDataModel user)
 		{
 			int Errors = 0;
 			if (user.UserId == 0)
 				Errors++;
-			if (string.IsNullOrWhiteSpace(user.User.FirstName))
-				Errors++;
-			if (string.IsNullOrWhiteSpace(user.User.LastName))
-				Errors++;
-			if (string.IsNullOrWhiteSpace(user.User.Email) || _helper.TestIsEmailValid(user.User.Email))
-				Errors++;
-			if (string.IsNullOrWhiteSpace(user.User.Phone))
-				Errors++;
-			if (string.IsNullOrWhiteSpace(user.User.StreetAddress))
-				Errors++;
-			if (string.IsNullOrWhiteSpace(user.User.City))
-				Errors++;
-			if (string.IsNullOrWhiteSpace(user.User.PostalCode))
-				Errors++;
-			if (user.User.CountryId == 0)
-				Errors++;
-			return Errors == 0;
+			return (Errors += ValidatingUser(user.User)) == 0;
 		}
 		public bool ValidateCreatingUser(CreateUserInputDataModel user)
 		{

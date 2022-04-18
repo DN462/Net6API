@@ -42,7 +42,7 @@ namespace Net6API.Utilities
                  * valid = m.Host.Contains(".");
                  * It generates the boolean expression but for easier understanding I have it written below in longer format.
                  */
-                if (m.Host.Contains("."))
+                if (m.Host.Contains('.'))
                     valid = true;
                 else
                     valid = false;

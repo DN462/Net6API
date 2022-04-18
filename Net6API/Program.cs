@@ -15,7 +15,7 @@ builder.Services.AddCors(options =>
     {
         policy.AllowAnyHeader()
               .WithMethods("GET", "POST", "PUT", "DELETE")
-              .AllowAnyOrigin()
+              .WithOrigins("https://www.google.com")
               .SetPreflightMaxAge(TimeSpan.FromSeconds(2520));
     });
 });

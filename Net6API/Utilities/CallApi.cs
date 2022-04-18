@@ -6,7 +6,7 @@ namespace Net6API.Utilities
     // This is written to use an Interface so it can be used as a Dependency Injection across the entire project to streamline the code.
 	public class CallApi : ICallApi
 	{
-        private async Task<RestResponse> ApiCalling(string url, Method method, string? body = null)
+        private static async Task<RestResponse> ApiCalling(string url, Method method, string? body = null)
         {
             // Url gets passed in and filtered for bad characters (Note your API copy may not have this)
             url = Uri.EscapeDataString(url);
