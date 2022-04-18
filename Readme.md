@@ -1,10 +1,10 @@
 ﻿# Welcome
 
-This is an .NET 5 Implementation of API.
+This is an .NET 6 Implementation of API.
 
 ## Status
 
-[![CodeFactor](https://www.codefactor.io/repository/github/dn462/net5api/badge)](https://www.codefactor.io/repository/github/dn462/net5api)
+[![CodeFactor](https://www.codefactor.io/repository/github/dn462/net6api/badge)](https://www.codefactor.io/repository/github/dn462/net6api)
 
 ## Note
 
