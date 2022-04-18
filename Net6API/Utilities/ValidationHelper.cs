@@ -1,6 +1,4 @@
-﻿using System;
-using System.Net.Mail;
-using Microsoft.Extensions.Logging;
+﻿using System.Net.Mail;
 using Net6API.Interface;
 
 namespace Net6API.Utilities
@@ -12,17 +10,14 @@ namespace Net6API.Utilities
          * This should be of major help as it helps validate email addresses to a certain point.
          * It tests that the hostname in the email address contains a period.
          * If it does infact have one then it is reasonable to assume the email address is valid.
+         * The variable private readonly ILogger<ValidationHelper> _logger; below sets up the Logging service to be able to be used within this class.
          */
-
-        // This sets up the Logging service to be able to be used within this class.
         private readonly ILogger<ValidationHelper> _logger;
-
         // This is enabling the class and helping it inject all of the dependencies in this case the logging system
         public ValidationHelper(ILogger<ValidationHelper> logger)
         {
             _logger = logger;
         }
-
         // This is to test if the email address is given is valid.
         private bool TestingIsEmailValid(string Email)
         {
@@ -40,7 +35,6 @@ namespace Net6API.Utilities
                  * of the email that gets passed in.
                  */
                 MailAddress m = new (Email);
-
                 /*
                  * The if statement below uses the Contains method to check if the host has a period in the name which
                  * is being used as the decision point if the email is valid. If it is valid then we pass it through if
@@ -67,4 +61,3 @@ namespace Net6API.Utilities
         }
     }
 }
-

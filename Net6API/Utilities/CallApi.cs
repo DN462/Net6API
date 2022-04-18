@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Net6API.Interface;
+﻿using Net6API.Interface;
 using RestSharp;
 
 namespace Net6API.Utilities
@@ -40,4 +38,3 @@ namespace Net6API.Utilities
         }
     }
 }
-

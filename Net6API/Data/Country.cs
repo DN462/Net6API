@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Net6API.Data
+﻿namespace Net6API.Data
 {
     public partial class Country
     {

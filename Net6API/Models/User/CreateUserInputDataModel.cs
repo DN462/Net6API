@@ -7,4 +7,3 @@ namespace Net6API.Models.User
         public UserInputDataModel User { get; set; }
     }
 }
-

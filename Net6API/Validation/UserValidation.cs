@@ -10,7 +10,6 @@ namespace Net6API.Validation
         {
 			_helper = helper;
         }
-
 		private bool ValidatingCreatingUser(CreateUserInputDataModel user)
 		{
 			int Errors = 0;
@@ -65,4 +64,3 @@ namespace Net6API.Validation
 		}
 	}
 }
-

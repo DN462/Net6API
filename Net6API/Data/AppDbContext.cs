@@ -1,15 +1,12 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 #nullable disable
-
 namespace Net6API.Data
 {
     public partial class AppDbContext : DbContext
     {
         public AppDbContext()
         {
-
         }
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)
@@ -45,7 +42,6 @@ namespace Net6API.Data
                    .HasMaxLength(10)
                    .IsUnicode(true);
             });
-
             modelBuilder.Entity<UserInformation>(entity =>
             {
                 entity.ToTable("UserInformation");

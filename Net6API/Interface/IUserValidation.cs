@@ -1,5 +1,4 @@
-﻿using System;
-using Net6API.Models.User;
+﻿using Net6API.Models.User;
 
 namespace Net6API.Interface
 {
@@ -9,4 +8,3 @@ namespace Net6API.Interface
 		public bool ValidateUpdatingUser(UpdateUserInputDataModel user);
 	}
 }
-

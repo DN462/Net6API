@@ -50,4 +50,3 @@ namespace Net6API.Models.Shared.User
         public string PostalCode { get; set; }
     }
 }
-

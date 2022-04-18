@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using RestSharp;
+﻿using RestSharp;
 
 namespace Net6API.Interface
 {
@@ -14,4 +13,3 @@ namespace Net6API.Interface
 		public Task<RestResponse> ApiCall(string url, Method method, string? body = null);
 	}
 }
-
