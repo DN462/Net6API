@@ -41,7 +41,7 @@ namespace Net6API.Validation
 			int Errors = 0;
 			if (user.UserId == 0)
 				Errors++;
-			Errors += ValidatingUser(user.User)
+			Errors += ValidatingUser(user.User);
 			return Errors == 0;
 		}
 		public bool ValidateCreatingUser(CreateUserInputDataModel user)
