@@ -18,8 +18,10 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
+      run: dotnet restore Net6API
+    - name: Restore dependencies tests
+      run: dotnet restore Net6APITests
+    - name: Build Project
+      run: dotnet build Net6API --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test Net6APITests --no-build --verbosity normal
