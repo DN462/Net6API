@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  net6api:
+    image: ${DOCKER_REGISTRY-}net6api
+    build:
+      context: .
+      dockerfile: Net6API/Dockerfile
