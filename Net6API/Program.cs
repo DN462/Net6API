@@ -6,6 +6,7 @@ using Net6API.Utilities;
 using Net6API.Validation;
 using Net6API.Middleware;
 using Net6API.LoggingData;
+using Net6API.Processing;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.ConfigureKestrel((context, options) =>
@@ -43,6 +44,7 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(buil
 builder.Services.AddDbContext<LogDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("LoggingDB")));
 builder.Services.AddTransient<ICallApi, CallApi>();
 builder.Services.AddTransient<IGeoCoordinateHelper, GeoCoordinateHelper>();
+builder.Services.AddTransient<IProcessingUser, ProcessingUser>();
 builder.Services.AddTransient<IUserValidation, UserValidation>();
 builder.Services.AddTransient<IValidationHelper, ValidationHelper>();
 

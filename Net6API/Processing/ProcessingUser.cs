@@ -1,11 +1,10 @@
-﻿using System;
-using Net6API.Data;
+﻿using Net6API.Data;
 using Net6API.Interface;
 using Net6API.Models.User;
 
 namespace Net6API.Processing
 {
-	public class ProcessingUser
+	public class ProcessingUser : IProcessingUser
 	{
 		private readonly AppDbContext _context;
 		private readonly ILogger<ProcessingUser> _logger;
@@ -52,5 +51,53 @@ namespace Net6API.Processing
 			}
 			return success;
 		}
+		private async Task<bool> UpdatingUser(UpdateUserInputDataModel user)
+		{
+			bool success;
+			try
+			{
+				if (_userValidation.ValidateUpdatingUser(user))
+				{
+					UserInformation updateUser = await _context.UsersInformation.FindAsync(user.UserId);
+					if (updateUser != null)
+					{
+						updateUser.City = user.User.City;
+						updateUser.CountryId = user.User.CountryId;
+						updateUser.Email = user.User.Email;
+						updateUser.FirstName = user.User.FirstName;
+						updateUser.LastName = user.User.LastName;
+						updateUser.Phone = user.User.Phone;
+						updateUser.PostalCode = user.User.PostalCode;
+						updateUser.State = user.User.State;
+						updateUser.StreetAddress = user.User.StreetAddress;
+						if (_userValidation.ValidateUpdatingUser(updateUser))
+						{
+							await _context.SaveChangesAsync();
+							success = true;
+						}
+						else
+							success = false;
+					}
+					else
+						success = false;
+				}
+				else
+					success = false;
+			}
+			catch (Exception ex)
+			{
+				_logger.LogError("Error has occurred in the UpdatingUser function in the ProcessingUser class: " + ex);
+				success = false;
+			}
+			return success;
+		}
+		public async Task<bool> CreateUser(CreateUserInputDataModel user)
+        {
+			return await CreatingUser(user);
+        }
+		public async Task<bool> UpdateUser(UpdateUserInputDataModel user)
+        {
+			return await UpdatingUser(user);
+        }
 	}
 }
