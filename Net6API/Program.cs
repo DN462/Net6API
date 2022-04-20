@@ -11,11 +11,11 @@ using Net6API.Processing;
 var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.ConfigureKestrel((context, options) =>
 {
-    options.ListenAnyIP(5001, listenOptions =>
-    {
-        listenOptions.Protocols = HttpProtocols.Http1AndHttp2AndHttp3;
-        listenOptions.UseHttps();
-    });
+    //options.ListenAnyIP(5001, listenOptions =>
+    //{
+    //    listenOptions.Protocols = HttpProtocols.Http1AndHttp2AndHttp3;
+    //    listenOptions.UseHttps();
+    //});
     options.ConfigureHttpsDefaults(httpSpec =>
     {
         httpSpec.SslProtocols = System.Security.Authentication.SslProtocols.Tls13;
