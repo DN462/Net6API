@@ -12,12 +12,6 @@ COPY . .
 WORKDIR "/src/Net6API"
 RUN dotnet build "Net6API.csproj" -c Release -o /app/build
 
-COPY ["Net6APITests/Net6APITests.csproj", "Net6APITests/"]
-RUN dotnet restore "Net6APITests/Net6APITests.csproj"
-COPY . .
-WORKDIR "/src/Net6APITests"
-RUN dotnet test "Net6APITests.csproj"
-
 FROM build AS publish
 RUN dotnet publish "Net6API.csproj" -c Release -o /app/publish
 
