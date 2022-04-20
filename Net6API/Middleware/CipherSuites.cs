@@ -3,7 +3,7 @@ using System.Net.Security;
 
 namespace Net6API.Middleware
 {
-	public class CipherSuites
+	public static class CipherSuites
 	{
         internal static readonly CipherSuitesPolicy SelectedCipherSuitesPolicy = new
         (

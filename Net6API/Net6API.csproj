@@ -42,11 +42,13 @@
     <None Remove="Middleware\" />
     <None Remove="Models\Error\" />
     <None Remove="LoggingData\" />
+    <None Remove="Processing\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Middleware\" />
     <Folder Include="Models\Error\" />
     <Folder Include="LoggingData\" />
+    <Folder Include="Processing\" />
   </ItemGroup>
 </Project>
