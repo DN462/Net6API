@@ -9,22 +9,6 @@ using Net6API.LoggingData;
 using Net6API.Processing;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.WebHost.ConfigureKestrel((context, options) =>
-{
-    //options.ListenAnyIP(5001, listenOptions =>
-    //{
-    //    listenOptions.Protocols = HttpProtocols.Http1AndHttp2AndHttp3;
-    //    listenOptions.UseHttps();
-    //});
-    options.ConfigureHttpsDefaults(httpSpec =>
-    {
-        httpSpec.SslProtocols = System.Security.Authentication.SslProtocols.Tls13;
-        httpSpec.OnAuthenticate = (conContext, sslAuthOptions) =>
-        {
-            sslAuthOptions.CipherSuitesPolicy = CipherSuites.SelectedCipherSuitesPolicy;
-        };
-    });
-});
 // Add services to the container.
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
